@@ -32,11 +32,11 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.heimdall-api-webrouter-{{deploymentId}}.entrypoints=http
-      - traefik.http.routers.heimdall-api-webrouter-{{deploymentId}}.rule=Host(`{{deployment.accessLink}}`)&&PathPrefix(`/api`)
+      - traefik.http.routers.heimdall-api-webrouter-{{deploymentId}}.rule=Host(`{{fullyQualifiedDomainName}}`)&&PathPrefix(`/api`)
       - traefik.http.middlewares.heimdall-web-websecure-{{deploymentId}}-redirect.redirectscheme.scheme=https
       - traefik.http.routers.heimdall-api-webrouter-{{deploymentId}}.middlewares=heimdall-web-websecure-{{deploymentId}}-redirect
       - traefik.http.routers.heimdall-api-websecurerouter-{{deploymentId}}.entrypoints=https
-      - traefik.http.routers.heimdall-api-websecurerouter-{{deploymentId}}.rule=Host(`{{deployment.accessLink}}`)&&PathPrefix(`/api`)
+      - traefik.http.routers.heimdall-api-websecurerouter-{{deploymentId}}.rule=Host(`{{fullyQualifiedDomainName}}`)&&PathPrefix(`/api`)
       - traefik.http.routers.heimdall-api-websecurerouter-{{deploymentId}}.tls=true
       - traefik.http.routers.heimdall-api-websecurerouter-{{deploymentId}}.service=heimdall-api-gateway-{{deploymentId}}
       - traefik.http.services.heimdall-api-gateway-{{deploymentId}}.loadbalancer.server.port=8080
