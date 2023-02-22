@@ -41,7 +41,7 @@ services:
       - traefik.http.routers.heimdall-api-websecurerouter-{{deploymentId}}.service=heimdall-api-gateway-{{deploymentId}}
       - traefik.http.services.heimdall-api-gateway-{{deploymentId}}.loadbalancer.server.port=8080
       - traefik.docker.network={{exposedNetwork}}
-  {{#each microservices}}
+{{#each microservices}}
   {{deploymentPrefix}}-{{deploymentId}}:
     image: '{{image.imageRegistry}}/{{image.imageName}}:{{image.tag}}'
     container_name: {{deploymentPrefix}}-{{deploymentId}}
@@ -50,4 +50,4 @@ services:
       - stack.env
     networks:
       - heimdall-network-{{deploymentId}}
-  {{/each}}
+{{/each}}
