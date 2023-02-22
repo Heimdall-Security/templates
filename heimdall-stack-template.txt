@@ -40,7 +40,7 @@ services:
       - traefik.http.routers.heimdall-api-websecurerouter-{{deploymentId}}.tls=true
       - traefik.http.routers.heimdall-api-websecurerouter-{{deploymentId}}.service=heimdall-api-gateway-{{deploymentId}}
       - traefik.http.services.heimdall-api-gateway-{{deploymentId}}.loadbalancer.server.port=8080
-      - traefik.docker.network={{exposedNetwork}}
+      - traefik.docker.network={{serverExposedNetwork}}
 {{#each microservices}}
   {{deploymentPrefix}}-{{deploymentId}}:
     image: '{{image.imageRegistry}}/{{image.imageName}}:{{image.tag}}'
