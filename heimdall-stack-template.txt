@@ -44,7 +44,7 @@ services:
   {{#each microservices}}
   {{deploymentPrefix}}-{{deploymentId}}:
     image: '{{image.imageRegistry}}/{{image.imageName}}:{{image.tag}}'
-    container_name: {{serviceName}}-{{deploymentId}}
+    container_name: {{deploymentPrefix}}-{{deploymentId}}
     restart: {{restartPolicy}}
     env_file:
       - stack.env
