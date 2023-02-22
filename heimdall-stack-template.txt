@@ -42,7 +42,7 @@ services:
       - traefik.http.services.heimdall-api-gateway-{{deploymentId}}.loadbalancer.server.port=8080
       - traefik.docker.network={{deployment.server.exposedNetwork}}
   {{#each microservices}}
-  {{serviceName}}-{{deploymentId}}:
+  {{deploymentPrefix}}-{{deploymentId}}:
     image: '{{image.imageRegistry}}/{{image.imageName}}:{{image.tag}}'
     container_name: {{serviceName}}-{{deploymentId}}
     restart: {{restartPolicy}}
